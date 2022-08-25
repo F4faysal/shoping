@@ -18,39 +18,27 @@ function updatePhone (istroue , ID )
 }
 
 //hone
-function updatetptlaPrice(newPhoneNumber , id){
-    const phoneTotalElemant = document.getElementById(id);
-    phoneTotalElemant.innerText = newPhoneNumber * 1219 ;
-}
 
-function gettotalElmant(elemantId){
-    const phoneSubtotal = document.getElementById(elemantId);
-    const currntPHoneSubTotalString = phoneSubtotal.innerText;
-    const currntPHoneSubTotal= parseInt(currntPHoneSubTotalString);
-    return currntPHoneSubTotal;
-}
 
 //case 
-function updatetptlCaseaPrice(newPhoneNumber){
-    const phoneTotalElemant = document.getElementById("case-total");
-    phoneTotalElemant.innerText = newPhoneNumber * 59 ;
-}
 
-
-function gettotalElmant(elemantId){
-    const phoneSubtotal = document.getElementById(elemantId);
-    const currntPHoneSubTotalString = phoneSubtotal.innerText;
-    const currntPHoneSubTotal= parseInt(currntPHoneSubTotalString);
-    return currntPHoneSubTotal;
+function setelemainbyid (elemantID,value){
+    const taxtAmountset = document.getElementById(elemantID);
+    taxtAmountset.innerHTML = value;
 }
 
 //sub total
 function subTotal(){
     const cruntPhoneTotal = gettotalElmant('phone-total');
     const cruntCadeTotal = gettotalElmant("case-total");
-
     const subtotalvalue = cruntPhoneTotal+cruntCadeTotal;
-
     const saubtotalelemant = document.getElementById('sub-total');
     saubtotalelemant.innerHTML = subtotalvalue;
+
+    const taxtAmountString = (subtotalvalue *0.1).toFixed(2);
+    const taxtAmount = parseFloat(taxtAmountString);
+    setelemainbyid('tax-amount',taxtAmount)
+
+    const finalTotal = subtotalvalue + taxtAmount;
+    setelemainbyid('final-total',finalTotal);
 }
